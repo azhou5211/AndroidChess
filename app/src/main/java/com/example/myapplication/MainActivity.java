@@ -8,19 +8,20 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private Button play_Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button play_Button = findViewById(R.id.playButton);
+        play_Button = (Button) findViewById(R.id.play_button);
         play_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,chessController.class));
+                startActivity(new Intent(MainActivity.this,play_chess.class));
             }
         });
+
     }
 }
