@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView00"
+        android:id="@+id/imageView100"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -46,48 +46,56 @@
 
             <ImageView
                 android:id="@+id/iv00"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_rook" />
 
             <ImageView
                 android:id="@+id/iv01"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_knight" />
 
             <ImageView
                 android:id="@+id/iv02"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_bishop" />
 
             <ImageView
                 android:id="@+id/iv03"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_queen" />
 
             <ImageView
                 android:id="@+id/iv04"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_king" />
 
             <ImageView
                 android:id="@+id/iv05"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_bishop" />
 
             <ImageView
                 android:id="@+id/iv06"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_knight" />
 
             <ImageView
                 android:id="@+id/iv07"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_rook" />
@@ -98,49 +106,57 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv08"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/black_pawn" />
+
+            <ImageView
+                android:id="@+id/iv09"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/black_pawn" />
+
+            <ImageView
                 android:id="@+id/iv10"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_pawn" />
 
             <ImageView
                 android:id="@+id/iv11"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_pawn" />
 
             <ImageView
                 android:id="@+id/iv12"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_pawn" />
 
             <ImageView
                 android:id="@+id/iv13"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_pawn" />
 
             <ImageView
                 android:id="@+id/iv14"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_pawn" />
 
             <ImageView
                 android:id="@+id/iv15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/black_pawn" />
-
-            <ImageView
-                android:id="@+id/iv16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/black_pawn" />
-
-            <ImageView
-                android:id="@+id/iv17"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/black_pawn" />
@@ -151,49 +167,57 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv16"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv17"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv18"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv19"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
                 android:id="@+id/iv20"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv21"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv22"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
-
-            <ImageView
-                android:id="@+id/iv24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
-
-            <ImageView
-                android:id="@+id/iv25"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
-
-            <ImageView
-                android:id="@+id/iv26"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
-
-            <ImageView
-                android:id="@+id/iv27"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
@@ -204,49 +228,118 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv24"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv25"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv26"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv27"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv28"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv29"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
                 android:id="@+id/iv30"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv31"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/iv32"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv33"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv34"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv35"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv36"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv37"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv38"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/transparent" />
+
+            <ImageView
+                android:id="@+id/iv39"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
@@ -258,48 +351,56 @@
 
             <ImageView
                 android:id="@+id/iv40"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv41"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv42"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv43"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv44"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv45"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv46"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
 
             <ImageView
                 android:id="@+id/iv47"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/transparent" />
@@ -308,157 +409,120 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv48"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/white_pawn" />
+
+            <ImageView
+                android:id="@+id/iv49"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/white_pawn" />
 
             <ImageView
                 android:id="@+id/iv50"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
+                app:srcCompat="@drawable/white_pawn" />
 
             <ImageView
                 android:id="@+id/iv51"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
+                app:srcCompat="@drawable/white_pawn" />
 
             <ImageView
                 android:id="@+id/iv52"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
+                app:srcCompat="@drawable/white_pawn" />
 
             <ImageView
                 android:id="@+id/iv53"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
+                app:srcCompat="@drawable/white_pawn" />
 
             <ImageView
                 android:id="@+id/iv54"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
+                app:srcCompat="@drawable/white_pawn" />
 
             <ImageView
                 android:id="@+id/iv55"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
+                app:srcCompat="@drawable/white_pawn" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/iv56"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
-
-            <ImageView
-                android:id="@+id/iv57"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/transparent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/iv60"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/white_pawn" />
-
-            <ImageView
-                android:id="@+id/iv61"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/white_pawn" />
-
-            <ImageView
-                android:id="@+id/iv62"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/white_pawn" />
-
-            <ImageView
-                android:id="@+id/iv63"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/white_pawn" />
-
-            <ImageView
-                android:id="@+id/iv64"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/white_pawn" />
-
-            <ImageView
-                android:id="@+id/iv65"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/white_pawn" />
-
-            <ImageView
-                android:id="@+id/iv66"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/white_pawn" />
-
-            <ImageView
-                android:id="@+id/iv67"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/white_pawn" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/iv70"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/white_rook" />
 
             <ImageView
-                android:id="@+id/iv71"
+                android:id="@+id/iv57"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/white_knight" />
 
             <ImageView
-                android:id="@+id/iv72"
+                android:id="@+id/iv58"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/white_bishop" />
 
             <ImageView
-                android:id="@+id/iv73"
+                android:id="@+id/iv59"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/white_queen" />
 
             <ImageView
-                android:id="@+id/iv74"
+                android:id="@+id/iv60"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/white_king" />
 
             <ImageView
-                android:id="@+id/iv75"
+                android:id="@+id/iv61"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/white_bishop" />
 
             <ImageView
-                android:id="@+id/iv76"
+                android:id="@+id/iv62"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/white_knight" />
 
             <ImageView
-                android:id="@+id/iv77"
+                android:id="@+id/iv63"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/white_rook" />
