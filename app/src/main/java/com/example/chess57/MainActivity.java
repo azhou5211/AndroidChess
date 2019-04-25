@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.chess57;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
