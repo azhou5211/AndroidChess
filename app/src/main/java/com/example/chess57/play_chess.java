@@ -1,12 +1,17 @@
 package com.example.chess57;
 
 import android.app.AlertDialog;
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DialogTitle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -276,25 +281,8 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
         images.add(imgView61);
         images.add(imgView62);
         images.add(imgView63);
-
-
-
-
-
-
-
-
-
     }
 
-
-    /*
-    private static int initial_location;
-    private static int final_location;
-    private static String str_initial_location;
-    private static String str_final_location;
-    private static String str_move;
-     */
     @Override
     public void onClick(View v) {
         int index;
@@ -1875,7 +1863,7 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.save_game:
-
+                save_game();
                 break;
         }
     }
@@ -2027,26 +2015,6 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
         return true;
     }
 
-    private static void check_pawn_promotion() {
-        int i;
-        for(i=0;i<8;i++) {
-            if(board[i].piece instanceof Pawn) {
-                if(board[i].piece.player.equals("w")) {
-                    // Need dialog for pawn promotion
-                    //System.out.println("White Pawn Promotion Needed");
-                }
-            }
-        }
-        for(i=56;i<64;i++) {
-            if(board[i].piece instanceof Pawn) {
-                if(board[i].piece.player.equals("b")) {
-                    // Need dialog for pawn promotion
-                    //System.out.println("Black Pawn Promotion Needed");
-                }
-            }
-        }
-    }
-
     private static void invert_player() {
         if(whiteTurn==true) {
             whiteTurn = false;
@@ -2063,6 +2031,7 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
         ai.setEnabled(false);
         draw.setEnabled(false);
         resign.setEnabled(false);
+        //save_game();
     }
 
     private static void undo_move(saveObject s) {
@@ -2098,6 +2067,95 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
         }
         invert_player();
         Node.print(board);
+    }
+
+    private static void check_pawn_promotion() {
+        int i;
+        for(i=0;i<8;i++) {
+            if(board[i].piece instanceof Pawn) {
+                if(board[i].piece.player.equals("w")) {
+                    // Need dialog for pawn promotion
+                    //System.out.println("White Pawn Promotion Needed");
+                    //play_chess.pawn_promotion();
+                }
+            }
+        }
+        for(i=56;i<64;i++) {
+            if(board[i].piece instanceof Pawn) {
+                if(board[i].piece.player.equals("b")) {
+                    // Need dialog for pawn promotion
+                    //System.out.println("Black Pawn Promotion Needed");
+                }
+            }
+        }
+    }
+
+    private void pawn_promotion(Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Pawn Promotion");
+
+
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(play_chess.this, android.R.layout.select_dialog_singlechoice);
+        arrayAdapter.add("Queen");
+        arrayAdapter.add("Rook");
+        arrayAdapter.add("Bishop");
+        arrayAdapter.add("Knight");
+
+        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String strName = arrayAdapter.getItem(which);
+                AlertDialog.Builder builderInner = new AlertDialog.Builder(play_chess.this);
+                builderInner.setMessage(strName);
+                builderInner.setTitle("Your Selected Item is");
+                builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog,int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builderInner.show();
+            }
+        });
+        builder.show();
+    }
+
+    private void save_game() {
+
+
+        /*
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setCancelable(true);
+                builder.setTitle("Draw");
+                builder.setMessage("Does the opponent accept the draw?");
+                builder.setPositiveButton("Confirm",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // draw confirmed
+                                text.setText("Draw");
+                                end_game();
+                            }
+                        });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue the game as usual
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+         */
+
     }
 
     private static String convert_to_string(int location) {
