@@ -1,5 +1,6 @@
 package com.example.chess57.chesspieces;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import com.example.chess57.play_chess;
 
@@ -11,7 +12,7 @@ import com.example.chess57.play_chess;
  * @version javaSE-1.8
  */
 
-public class Pawn extends Piece {
+public class Pawn extends Piece implements Serializable {
 
 	public Pawn(String player, int startIndex) {
 		super(player,startIndex);

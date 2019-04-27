@@ -1,22 +1,29 @@
 package com.example.chess57;
 
 import android.app.AlertDialog;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DialogTitle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
+
 import com.example.chess57.chesspieces.*;
 import com.example.chess57.saveobject.*;
 
@@ -36,12 +43,16 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
     private static String str_final_location;
     private static ArrayList<ImageView> images;
     private static ArrayList<saveObject> android_history;
+    private static ArrayList<saveObject2> Saving_history;
     private static ImageView lastImage;
     private static TextView text;
     private static Button undo;
     private static Button ai;
     private static Button draw;
     private static Button resign;
+    public static Context myContext;
+    private static LayoutInflater inflater;
+    //private static String save_name;
 
 
     @Override
@@ -61,11 +72,14 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
         initial_location = -1;
         final_location = -1;
         Node.print(board);
+        myContext = play_chess.this;
+        inflater = play_chess.this.getLayoutInflater();
 
         text = (TextView) findViewById(R.id.textView1);
 
         images = new ArrayList<ImageView>();
         android_history = new ArrayList<saveObject>();
+        Saving_history = new ArrayList<>();
 
         undo = (Button) findViewById(R.id.undo);
         undo.setOnClickListener(this);
@@ -1767,6 +1781,8 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
                 }
                 saveObject s = android_history.get(size-1);
                 android_history.remove(size-1);
+                saveObject2 s2 = Saving_history.get(size-1);
+                Saving_history.remove(size-1);
                 undo_move(s);
                 undo.setEnabled(false);
                 break;
@@ -1887,6 +1903,7 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
 
             saveObject s = new saveObject(str_initial_location, str_final_location, initial_location, final_location, temporary_image1.getDrawable(), temporary_image2.getDrawable(), initial_piece, final_piece);
             android_history.add(s);
+            Saving_history.add(new saveObject2(str_initial_location,str_final_location,initial_location,final_location,initial_piece,final_piece));
 
             temporary_image2.setImageDrawable(temporary_image1.getDrawable());
             temporary_image1.setImageResource(R.drawable.transparent);
@@ -1943,6 +1960,7 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
 
             saveObject s = new saveObject(str_initial_location, str_final_location, initial_location, final_location, temporary_image1.getDrawable(), temporary_image2.getDrawable(), initial_piece, final_piece);
             android_history.add(s);
+            Saving_history.add(new saveObject2(str_initial_location,str_final_location,initial_location,final_location,initial_piece,final_piece));
 
             temporary_image2.setImageDrawable(temporary_image1.getDrawable());
             temporary_image1.setImageResource(R.drawable.transparent);
@@ -2031,7 +2049,7 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
         ai.setEnabled(false);
         draw.setEnabled(false);
         resign.setEnabled(false);
-        //save_game();
+        save_game();
     }
 
     private static void undo_move(saveObject s) {
@@ -2077,6 +2095,20 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
                     // Need dialog for pawn promotion
                     //System.out.println("White Pawn Promotion Needed");
                     //play_chess.pawn_promotion();
+                    pawn_promotion();
+                    if(pawnPromotion.equals("") || pawnPromotion.equals("Queen")) {
+                        board[i].piece = new Queen("w", i);
+                        images.get(i).setImageResource(R.drawable.white_queen);
+                    } else if(pawnPromotion.equals("Rook")) {
+                        board[i].piece = new Rook("w", i);
+                        images.get(i).setImageResource(R.drawable.white_rook);
+                    } else if(pawnPromotion.equals("Bishop")) {
+                        board[i].piece = new Bishop("w", i);
+                        images.get(i).setImageResource(R.drawable.white_bishop);
+                    } else if(pawnPromotion.equals("Knight")) {
+                        board[i].piece = new Knight("w", i);
+                        images.get(i).setImageResource(R.drawable.white_knight);
+                    }
                 }
             }
         }
@@ -2085,77 +2117,148 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
                 if(board[i].piece.player.equals("b")) {
                     // Need dialog for pawn promotion
                     //System.out.println("Black Pawn Promotion Needed");
+                    pawn_promotion();
+                    if(pawnPromotion.equals("") || pawnPromotion.equals("Queen")) {
+                        board[i].piece = new Queen("b", i);
+                        images.get(i).setImageResource(R.drawable.black_queen);
+                    } else if(pawnPromotion.equals("Rook")) {
+                        board[i].piece = new Rook("b", i);
+                        images.get(i).setImageResource(R.drawable.black_rook);
+                    } else if(pawnPromotion.equals("Bishop")) {
+                        board[i].piece = new Bishop("b", i);
+                        images.get(i).setImageResource(R.drawable.black_bishop);
+                    } else if(pawnPromotion.equals("Knight")) {
+                        board[i].piece = new Knight("b", i);
+                        images.get(i).setImageResource(R.drawable.black_knight);
+                    }
                 }
             }
         }
+        pawnPromotion = "";
     }
 
-    private void pawn_promotion(Context context) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    private static String pawnPromotion = "";
+
+    private static void pawn_promotion() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
+        builder.setCancelable(false);
         builder.setTitle("Pawn Promotion");
+        //builder.
 
-
-
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(play_chess.this, android.R.layout.select_dialog_singlechoice);
+        /*
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(myContext, android.R.layout.select_dialog_singlechoice);
         arrayAdapter.add("Queen");
         arrayAdapter.add("Rook");
         arrayAdapter.add("Bishop");
         arrayAdapter.add("Knight");
+        */
 
-        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+        final String[] arrayAdapter = {"Queen", "Rook", "Bishop", "Knight"};
+
+        builder.setItems(arrayAdapter, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+                //System.out.println(which);
+                pawnPromotion = arrayAdapter[which];
+                //pawnPromotion = arrayAdapter.getItem(which);
+                //System.out.println(pawnPromotion);
             }
         });
 
-        builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String strName = arrayAdapter.getItem(which);
-                AlertDialog.Builder builderInner = new AlertDialog.Builder(play_chess.this);
-                builderInner.setMessage(strName);
-                builderInner.setTitle("Your Selected Item is");
-                builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog,int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builderInner.show();
-            }
-        });
         builder.show();
     }
 
-    private void save_game() {
+    private static void save_game() {
 
-
-        /*
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setCancelable(true);
-                builder.setTitle("Draw");
-                builder.setMessage("Does the opponent accept the draw?");
-                builder.setPositiveButton("Confirm",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // draw confirmed
-                                text.setText("Draw");
-                                end_game();
-                            }
-                        });
-                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
+        builder.setCancelable(false);
+        builder.setTitle("Save");
+        builder.setMessage("Save File Name:");
+        View view = inflater.inflate(R.layout.save_dialog,null);
+        final EditText save_name2 = (EditText) view.findViewById(R.id.save_name);
+        builder.setView(view).setPositiveButton("Confirm",
+                new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // continue the game as usual
+
+                        ArrayList<saveArray> all_save = null;
+                        FileInputStream fis = null;
+                        try {
+                            fis = myContext.openFileInput("save.txt");
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            ObjectInputStream is = new ObjectInputStream(fis);
+                            try {
+                                all_save = (ArrayList<saveArray>) is.readObject();
+                            } catch (ClassNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                            is.close();
+                            fis.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        //System.out.println(all_save.get(0));
+
+
+                        //ArrayList<saveArray> all_save = new ArrayList<>();
+                        String save_name = save_name2.getText().toString();
+                        saveArray new_save = new saveArray(Saving_history, save_name);
+
+                        all_save.add(new_save);
+                        //Collections.sort(all_save);
+
+                        FileOutputStream fos = null;
+                        try{
+                            fos = myContext.openFileOutput("save.txt",Context.MODE_PRIVATE);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        ObjectOutputStream os;
+                        try {
+                            os = new ObjectOutputStream(fos);
+                            os.writeObject(all_save);
+                            os.close();
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        /*
+                        FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+                        ObjectOutputStream os = new ObjectOutputStream(fos);
+                        os.writeObject(this);
+                        os.close();
+                        fos.close();
+                         */
+
+
+                        //com.example.chess57.chesspieces.*
+                        //FileInputStream fos = new FileInputStream("com.example.chess57.saveFiles.save.txt");
+                        //ObjectInputStream oos = new ObjectInputStream(fos);
+                        //listOfUsers = (ArrayList<User>) oos.readObject();
+                        //oos.close();
+
+
+                        //System.out.println(save_name);
+                        //System.out.println(save_name2.getText());
+                        //save_name = save_name2.getText();
                     }
-                });
+                }
+        ).setNegativeButton("cancel",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                AlertDialog dialog = builder.create();
-                dialog.show();
-         */
+                    }
+                }
+        );
 
+
+        builder.show();
     }
 
     private static String convert_to_string(int location) {

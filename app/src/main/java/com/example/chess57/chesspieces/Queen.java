@@ -1,5 +1,6 @@
 package com.example.chess57.chesspieces;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @version javaSE-1.8
  */
 
-public class Queen extends Piece {
+public class Queen extends Piece implements Serializable {
 
 	/**
 	 * Creates a new Queen

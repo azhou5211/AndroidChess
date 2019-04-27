@@ -1,5 +1,6 @@
 package com.example.chess57.chesspieces;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import com.example.chess57.play_chess;
 
@@ -12,7 +13,7 @@ import com.example.chess57.play_chess;
  * @version javaSE-1.8
  */
 
-public abstract class Piece {
+public abstract class Piece implements Serializable {
 	/**
 	 * The player to which the piece belongs to
 	 */

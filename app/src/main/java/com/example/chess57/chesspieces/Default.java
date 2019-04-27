@@ -1,5 +1,6 @@
 package com.example.chess57.chesspieces;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * @version javaSE-1.8
  */
 
-public class Default extends Piece {
+public class Default extends Piece implements Serializable {
 	
 	/**
 	 * Creates a default piece. default piece is actually where the chess board is empty.

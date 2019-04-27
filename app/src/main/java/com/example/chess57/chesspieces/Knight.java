@@ -1,5 +1,6 @@
 package com.example.chess57.chesspieces;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @version javaSE-1.8
  */
 
-public class Knight extends Piece {
+public class Knight extends Piece implements Serializable {
 
 
 	public Knight(String player, int startIndex) {

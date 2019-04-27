@@ -1,5 +1,7 @@
 package com.example.chess57.chesspieces;
 
+import java.io.Serializable;
+
 /**
  * Class that constructs the chess board.
  * Each chess board has an object Node, where node has gridColor, gridEmpty, and Piece
@@ -8,7 +10,7 @@ package com.example.chess57.chesspieces;
  * @version javaSE-1.8
  */
 
-public class Node {
+public class Node implements Serializable {
 	
 	/**
 	 * The color of chess board location. Either black or white
