@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import com.example.chess57.saveobject.*;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -38,10 +40,7 @@ public class Replay extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_replay);
-        /*
-        LayoutInflater inflater =  Replay.this.getLayoutInflater();;
-        View view = inflater.inflate(R.layout.save_dialog,null);
-        */
+
         sortedByName = true;
         sortName = (Button) findViewById(R.id.sort_name);
         sortName.setOnClickListener(this);

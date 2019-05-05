@@ -2209,9 +2209,9 @@ public class play_chess extends AppCompatActivity implements View.OnClickListene
 
                         all_save.add(new_save);
                         //Collections.sort(all_save);
-
                         FileOutputStream fos = null;
                         try{
+                            //myContext.openFileOutput("",Context.)
                             fos = myContext.openFileOutput("save.txt",Context.MODE_PRIVATE);
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
